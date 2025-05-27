@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "登录",
+  "disableScroll": true,
+  "usingComponents": {
+    "tn-nav-bar": "/tuniao-ui/components/tn-nav-bar/tn-nav-bar",
+    "tn-checkbox-group": "/tuniao-ui/components/tn-checkbox-group/tn-checkbox-group",
+    "tn-checkbox": "/tuniao-ui/components/tn-checkbox/tn-checkbox"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tn-nav-bar": "/tuniao-ui/components/tn-nav-bar/tn-nav-bar",
+    "tn-scroll-list": "/tuniao-ui/components/tn-scroll-list/tn-scroll-list",
+    "tn-avatar": "/tuniao-ui/components/tn-avatar/tn-avatar",
+    "quan-list": "/components/quan-list/quan-list",
+    "tn-landscape": "/tuniao-ui/components/tn-landscape/tn-landscape",
+    "mescroll-body": "/components/mescroll-uni/mescroll-body"
+  }
+}

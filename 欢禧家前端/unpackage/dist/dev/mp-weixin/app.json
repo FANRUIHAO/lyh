@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index",
+    "pages/login/login"
+  ],
+  "subPackages": [
+    {
+      "root": "homePages",
+      "pages": [
+        "about",
+        "search"
+      ]
+    },
+    {
+      "root": "circlePages",
+      "pages": [
+        "group_fans",
+        "group",
+        "tags_list",
+        "group_list",
+        "edit_quan",
+        "fans",
+        "blogger_other",
+        "details",
+        "reserve",
+        "medal",
+        "edit",
+        "create",
+        "build"
+      ]
+    },
+    {
+      "root": "minePages",
+      "pages": [
+        "set",
+        "my_group",
+        "my_msg",
+        "my_star"
+      ]
+    }
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "requiredPrivateInfos": [
+    "chooseLocation"
+  ],
+  "permission": {},
+  "usingComponents": {
+    "login-fn": "/components/loginFn/index"
+  }
+}

@@ -1,0 +1,165 @@
+{extend name="main" /}
+{block name="body"}
+{load href="/static/element/plus/css/index.css,/static/backend/css/backend.css,/static/admin/css/element-plus.af9157cd.css,/static/admin/css/index.6fb45948.css" /}
+<style>
+body{
+    overflow: overlay !important;
+}
+.store-total-container {
+    font-size: 14px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.store-total-container .store-total-icon {
+    top: 45%;
+    right: 8%;
+    font-size: 65px;
+    position: absolute;
+    color: rgba(255, 255, 255, 1);
+}
+
+.store-total-container .store-total-item {
+    color: #fff;
+    line-height: 3em;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.store-total-container .store-total-item > div:nth-child(2) {
+    font-size: 42px;
+    line-height: 42px;
+}
+
+</style>
+<div class="layui-fluid">
+   
+    <div class="md:flex">
+        
+        <div class="el-card is-never-shadow !border-none mb-4 flex-1">
+            <div class="el-card__header">
+                <div><span class="card-title">总数据</span><span class="text-tx-secondary text-xs ml-4"> 更新时间：{$total.one}</span>
+                </div>
+            </div>
+            <div class="el-card__body" style="">
+                <div class="flex flex-wrap">
+                    <div class="w-1/2 md:w-1/4">
+                        <div class="leading-10">圈子数量(个)</div>
+                        <div class="text-6xl">{$total.two}</div>
+                        
+                    </div>
+                    <div class="w-1/2 md:w-1/4">
+                        <div class="leading-10">会员数(人)</div>
+                        <div class="text-6xl">{$total.three}</div>
+                        
+                    </div>
+                    <div class="w-1/2 md:w-1/4">
+                        <div class="leading-10">帖子数(个)</div>
+                        <div class="text-6xl">{$total.four}</div>
+                        
+                    </div>
+                    <div class="w-1/2 md:w-1/4">
+                        <div class="leading-10">活动数(个)</div>
+                        <div class="text-6xl">{$total.five}</div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="function mb-4">
+        
+    </div>
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md9">
+            <div class="layui-card">
+                <div class="layui-card-header">数据概览</div>
+                <div class="layui-card-body layui-text">
+                    <div id="my_chart" style="width: 100%;height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md3">
+       
+        </div>
+    </div>
+
+    <div class="layui-row ">
+        <div class="layui-col-md9">
+
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="js"}
+<script src="/static/admin/js/echarts.js"></script>
+<script>
+    $(function(){
+        var url = 'https://www.51duoke.cn/update/index/newVersion'
+        $.post(url,function (res) {
+            console.log(res)
+            if (res.isShow == 1) {
+                //res.str = res.str.replace(/br/, "<br>")
+                $('#newVersion').show();
+                $('#updateTime').text(res.updateTime)
+                $('#updateContent').html(res.str)
+            }
+        },'json')
+    });
+    var myChart = echarts.init(document.getElementById('my_chart'));
+    // var fatie = {$weeks};
+    option = {
+        title: {
+            text: '综合数据'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data: ['发帖量']
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: '发帖量',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [{$weeks}]
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+{/block}
